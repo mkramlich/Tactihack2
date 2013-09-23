@@ -1,5 +1,12 @@
 TODO
 
+persisting/reloading a game session to disk (pickle or sqlite3)
+
+make the server able to serve multiple distinct game sessions from a single server process (running instance of tactihackd)
+    the clients need to specify which game session they're talking about
+
+option when starting the pygame client where it also starts up a server to talk to 
+
 can switch weapons from among your inventory (costs AP)
 
 can reload your gun from spare clips/ammo in your inventory (costs AP)
@@ -34,4 +41,22 @@ during a computer-controlled faction's turn, they do things via AI; if a badguy 
 
 option to show each guy's AP-left on map next to him
 
-persist/reload game session state to disk
+victory condition check
+
+can set off a tripwire which then activates an alarm; the player can see and "hear" the alarm blaring
+
+hidden mines
+
+factions: Eagle (blue) and SNAKE (red); non-com civilians are white; unknown persons yellow
+
+delete old msgs entries so doesn't leak
+
+in pygame client, key to see all msgs
+
+in pygame client, key to show a tabular report on your field team
+
+visibility, LOS
+
+range of effectiveness (to hit and dmg) dropoffs for weapons by weapon type
+
+
