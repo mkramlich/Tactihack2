@@ -1,13 +1,9 @@
 #!/usr/bin/env python2.7
 
-# Tactihack Pygame's Server, using 0MQ REP
+# Tactihack 2's Server, using 0MQ REP
 
 import json, pickle, zmq # we use 0MQ 3.2.4
 from tactihacklib import *
-
-#TODO support multiple distinct game sessions, load from in-proc dict cache, and option to persist/restore from disk; client has to specify which game session
-
-#TODO commands to persist and restore a game session from disk, and server option to automatically persist/restore them upon each succesfully handled client command
 
 things = None
 

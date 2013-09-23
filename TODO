@@ -49,7 +49,7 @@ hidden mines
 
 factions: Eagle (blue) and SNAKE (red); non-com civilians are white; unknown persons yellow
 
-delete old msgs entries so doesn't leak
+in pygame client, delete old 'fbs' entries so doesn't leak
 
 in pygame client, key to see all msgs
 
@@ -58,5 +58,4 @@ in pygame client, key to show a tabular report on your field team
 visibility, LOS
 
 range of effectiveness (to hit and dmg) dropoffs for weapons by weapon type
-
 

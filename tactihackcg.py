@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 
-# Tactihack's Pygame Client, using 0MQ REQ
+# Tactihack 2's Pygame Client, using 0MQ REQ
 
 game_title = 'TactiHack Pygame'
 

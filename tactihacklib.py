@@ -1,5 +1,7 @@
 # tactihacklib.py
 
+# Tactihack 2's app library
+
 import json, zmq # we use 0MQ 3.2.4
 
 SERVER_URL = "tcp://127.0.0.1:9999"
