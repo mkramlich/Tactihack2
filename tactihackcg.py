@@ -5,7 +5,7 @@
 game_title = 'TactiHack Pygame'
 
 import sys, time, json, pickle
-import pygame, zmq # we use 0MQ 3.2.4
+import pygame
 from tactihacklib import *
 
 width = None
@@ -173,7 +173,7 @@ def move(xd, yd):
         return
 
     msg = 'move %i %i %i' % (actor, xd, yd)
-    reply = send(msg) # assume reply is '<result-in-JSON>'
+    reply = client.send(msg) # assume reply is '<result-in-JSON>'
     resultjson = reply[5:] # because format was: 'JSON <json>'
     r = json.loads(resultjson) # afterward we have a dict
     s = r['s']
@@ -214,7 +214,7 @@ def fire():
         return
 
     msg = 'fire %i %i' % (actor, target)
-    reply = send(msg) # assume reply is '<result-in-JSON>'
+    reply = client.send(msg) # assume reply is '<result-in-JSON>'
     resultjson = reply[5:] # because format was: 'JSON <json>'
     r = json.loads(resultjson) # afterward we have a dict
     s = r['s']
@@ -225,12 +225,6 @@ def fire():
         e.hp = r['hp']
     fb(m)
 
-def send(msg):
-    print 'sending %s' % msg
-    server.send(msg)
-    reply = server.recv()
-    print "received reply '%s' for our msg '%s'" % (reply, msg)
-    return reply
 
 things = None
 thingviews = None
@@ -243,11 +237,13 @@ font = None
 actor = None
 target = None
 antialias = True
-server = None
+client = None
 
 
 def main():
-    global size, width, height, things, thingviews, surfs, fbs, colors, screen, fs, font, actor, target, server
+    global size, width, height, things, thingviews, surfs, fbs, colors, screen, fs, font, actor, target, client
+
+    print game_title
 
     pygame.init()
     pygame.font.init()
@@ -275,27 +271,12 @@ def main():
 
     fbs = []
 
-    # establish communication with the game server
-    # where the master instance of world state is held and updated
-    context = zmq.Context()
-    server = context.socket(zmq.REQ)
-    server.connect(SERVER_URL)
-
-    print game_title
     mode = Mode()
     #pygame.time.set_timer(ANIMATE_EVENT, 100) 
 
-    reply = send('newgame')
-    jsonresult = reply[5:] # because format was: 'PICK <pickled-things-array>'
-    jsonthings = json.loads(jsonresult)
-    thingsnew = []
-    for jt in jsonthings:
-        clname = jt['__class__']
-        thingsubclass = globals()[clname]
-        th = thingsubclass()
-        th.pop_from_dict(jt)
-        thingsnew.append(th)
-    things = thingsnew
+    client = TactihackClient()
+    reply = client.send('new_game')
+    things = new_game_reply_to_things(reply)
 
     thing2view_map = {
         Thing      : ThingView,

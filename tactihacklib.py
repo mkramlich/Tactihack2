@@ -1,5 +1,7 @@
 # tactihacklib.py
 
+import json, zmq # we use 0MQ 3.2.4
+
 SERVER_URL = "tcp://127.0.0.1:9999"
 
 class Thing:
@@ -64,4 +66,36 @@ class MachineGun(Thing):
         Thing.__init__(self,'machine gun',x,y)
         self.can_move = False
 
+
+class TactihackClient:
+    def __init__(self):
+        # establish communication with the game server
+        # where the master instance of world state is held and updated
+        context = zmq.Context()
+        self.server = context.socket(zmq.REQ)
+        self.server.connect(SERVER_URL)
+
+    def send(self, msg):
+        print 'sending msg to server: %s' % msg
+        self.server.send(msg)
+        reply = self.server.recv()
+        #print "received reply '%s' for our msg '%s'" % (reply, msg)
+        return reply
+
+
+def jsonthings_to_things(jsonthings):
+    thingsnew = []
+    for jt in jsonthings:
+        clname = jt['__class__']
+        thingsubclass = globals()[clname]
+        th = thingsubclass()
+        th.pop_from_dict(jt)
+        thingsnew.append(th)
+    return thingsnew
+
+def new_game_reply_to_things(reply):
+    jsonresult = reply[5:] # because format was: 'JSON <pickled-things-array>'
+    jsonthings = json.loads(jsonresult)
+    things = jsonthings_to_things(jsonthings)
+    return things
 

@@ -11,7 +11,10 @@ from tactihacklib import *
 
 things = None
 
-def newgame():
+def get_things():
+    return [th.ser_as_dict() for th in things]
+
+def new_game():
     global things
 
     things = [
@@ -105,8 +108,11 @@ def main():
         msg = socket.recv()
         print "received msg: %s" % msg
         reply = None
-        if msg.startswith('newgame'):
-            reply = json_reply( newgame())
+        if msg.startswith('new_game'):
+            reply = json_reply( new_game())
+            print 'replying: ' + reply
+        elif msg.startswith('get_things'):
+            reply = json_reply( get_things())
             print 'replying: ' + reply
         if msg.startswith('move'):
             reply = json_reply( move(msg))
