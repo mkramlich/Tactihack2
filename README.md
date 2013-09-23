@@ -12,7 +12,7 @@ There is also a CLI client which is not needed by players and exists purely to s
 
 Introduction
 
-This is a stab at re-writing/re-inventing an older unpublished game of mine, TactiHack, from scratch, except with some difference architectural and development process choices. The original was in C using curses and wsa a lot of fun to play, though the complete vision was not built out. This version uses Pygame. We'll start by implementing the core gameplay, the core fun part of movement and combat and exploration of a map, and won't add campaigns/scenarios/recruiting/etc until much much later in the project life. (Think a cross between XCOM and GI Joe.)  Another goal is to give it a client/server architecture from the start; and to use ZeroMQ, somewhat as an excuse to gain more experience using it; another goal is we're going to publish the source to this in my public GitHub account as a career feather-in-cap.
+This is a stab at re-writing/re-inventing an older unpublished game of mine, TactiHack, from scratch, except with some difference architectural and development process choices. The original was in C using curses and was a lot of fun to play, though the complete vision was not built out. This version uses Pygame. We'll start by implementing the core gameplay, the core fun part of movement and combat and exploration of a map, and won't add campaigns/scenarios/recruiting/etc until much much later in the project life. (Think a cross between XCOM and GI Joe.)  Another goal is to give it a client/server architecture from the start; and to use ZeroMQ, somewhat as an excuse to gain more experience using it; another goal is we're going to publish the source to this in my public GitHub account as a career feather-in-cap.
 
 This uses zeromq 3.2.4 for the client/server communication so you'll need to have that installed plus the Python zmq module.
 
@@ -25,6 +25,7 @@ Play Controls:
 * q to quit
 
 some units cannot fire, some cannot move
+
 the selected unit must have AP left to move or fire
 ammo is required to fire
 
