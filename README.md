@@ -1,4 +1,5 @@
-Tactihack2
+Tactihack 2
+===========
 
 This is a work-in-progress snapshot. It's not a finished/polished or fully playable product. We assume the user is a programmer or sufficiently technical.
 
