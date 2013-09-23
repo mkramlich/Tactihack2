@@ -1,0 +1,37 @@
+TODO
+
+can switch weapons from among your inventory (costs AP)
+
+can reload your gun from spare clips/ammo in your inventory (costs AP)
+
+can drop items
+
+can pickup item from ground (like an ammo clip there) (costs AP)
+
+is finite limit to qty/mass of items you can pickup/carry
+
+can be ammo on ground, can be picked up to add to your ammo
+
+can be wearing armor, if shot, reduces damage, varies by armor type/amount
+
+can throw a knife/dagger/shuriken if it's wielded, or do with off-hand without losing your main weapon wield status
+
+if tree is between shooter and target, chance of hitting is reduced
+
+guy can man a machine gun, when fires, it does way more damage per bullet and more bullets per tick/AP
+
+is key to 'end turn' which cycles turn to other faction; at a faction's turn start all his guy's AP is reset to max
+
+each faction is named; guys/things can belong/controlled-by a faction
+
+all units of same faction have same color on map
+
+can throw a grenade
+
+can make a melee attack, must be adjacent
+
+during a computer-controlled faction's turn, they do things via AI; if a badguy soldier is killed/shot, it effects the morale of his AI teammates
+
+option to show each guy's AP-left on map next to him
+
+persist/reload game session state to disk
