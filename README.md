@@ -4,6 +4,7 @@ Tactihack 2
 This is a work-in-progress snapshot. It's not a finished/polished or fully playable product. We assume the user is a programmer or sufficiently technical.
 
 To play:
+
     ./tactihackd
     ./tactihackcg
 
@@ -17,11 +18,11 @@ This uses zeromq 3.2.4 for the client/server communication so you'll need to hav
 
 Play Controls:
 
-TAB to cycle selected unit
-t to cycle current fire target
-f to make selected unit fire at current target 
-vi/Rogue-like keys to move selected unit in that direction (hjkl yu bn)
-q to quit
+* TAB to cycle selected unit
+* t to cycle current fire target
+* f to make selected unit fire at current target 
+* vi/Rogue-like keys to move selected unit in that direction (hjkl yu bn)
+* q to quit
 
 some units cannot fire, some cannot move
 the selected unit must have AP left to move or fire
